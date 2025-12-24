@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProInvoice — Smart Invoice Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <h1 class="logo">ProInvoice</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#create">Create Invoice</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#help">Help</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span class="material-icons">menu</span>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Professional Invoices in Minutes</h2>
+                <p>Create, manage, and send invoices effortlessly for your business.</p>
+                <a href="#create" class="cta">Start Creating</a>
+            </div>
+        </section>
+        <section id="features">
+            <div class="container">
+                <h2>Key Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <span class="material-icons">business</span>
+                        <h3>Business Profile</h3>
+                        <p>Customize and save your business details.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="material-icons">people</span>
+                        <h3>Client Management</h3>
+                        <p>Store and reuse client information.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="material-icons">receipt_long</span>
+                        <h3>Dynamic Items</h3>
+                        <p>Add items with automatic calculations.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="material-icons">preview</span>
+                        <h3>Real-Time Preview</h3>
+                        <p>See changes instantly.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="material-icons">download</span>
+                        <h3>Export Options</h3>
+                        <p>PDF download and print.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="material-icons">dashboard</span>
+                        <h3>Dashboard</h3>
+                        <p>Track invoices and revenue.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="create">
+            <div class="container create-container">
+                <h2>Create Invoice</h2>
+                <div class="dashboard-summary">
+                    <h3>Dashboard</h3>
+                    <p>Total Invoices: <span id="total-invoices">0</span></p>
+                    <p>Total Revenue: <span id="total-revenue">0</span></p>
+                    <h4>Recent Invoices</h4>
+                    <ul id="recent-invoices"></ul>
+                </div>
+                <div class="form-preview-grid">
+                    <form id="invoice-form">
+                        <div class="section">
+                            <h3>Business Profile</h3>
+                            <input type="text" id="biz-name" placeholder="Business Name" required>
+                            <input type="text" id="biz-address" placeholder="Business Address" required>
+                            <input type="email" id="biz-email" placeholder="Business Email" required>
+                            <input type="tel" id="biz-phone" placeholder="Business Phone" required>
+                            <input type="file" id="biz-logo" accept="image/*">
+                            <img id="logo-preview" src="" alt="Logo Preview" style="display:none;">
+                            <button type="button" id="save-biz">Save Profile</button>
+                        </div>
+                        <div class="section">
+                            <h3>Client Details</h3>
+                            <select id="client-select">
+                                <option value="">Select Client</option>
+                            </select>
+                            <input type="text" id="client-name" placeholder="Client Name" required>
+                            <input type="email" id="client-email" placeholder="Client Email" required>
+                            <input type="text" id="client-address" placeholder="Client Address" required>
+                            <button type="button" id="save-client">Save Client</button>
+                        </div>
+                        <div class="section">
+                            <h3>Invoice Details</h3>
+                            <input type="text" id="invoice-number" placeholder="Invoice Number" readonly>
+                            <input type="date" id="issue-date" required>
+                            <input type="date" id="due-date" required>
+                            <select id="currency" required>
+                                <option value="₦">₦ (NGN)</option>
+                                <option value="$">$ (USD)</option>
+                                <option value="€">€ (EUR)</option>
+                                <option value="£">£ (GBP)</option>
+                            </select>
+                            <select id="status">
+                                <option value="Draft">Draft</option>
+                                <option value="Sent">Sent</option>
+                                <option value="Paid">Paid</option>
+                            </select>
+                        </div>
+                        <div class="section">
+                            <h3>Invoice Items</h3>
+                            <div id="items-container"></div>
+                            <button type="button" id="add-item">Add Item</button>
+                            <input type="number" id="tax" placeholder="Tax (%)" min="0">
+                            <input type="text" id="discount" placeholder="Discount (e.g., 10 or 10%)">
+                            <input type="number" id="shipping" placeholder="Shipping Fee" min="0">
+                        </div>
+                        <div class="section">
+                            <h3>Notes & Terms</h3>
+                            <textarea id="terms" placeholder="Payment Terms"></textarea>
+                            <textarea id="notes" placeholder="Notes"></textarea>
+                            <textarea id="thankyou" placeholder="Thank You Message"></textarea>
+                            <textarea id="payment-details" placeholder="Bank/Payment Details"></textarea>
+                        </div>
+                        <button type="button" id="save-invoice">Save Invoice</button>
+                    </form>
+                    <div class="preview-wrapper">
+                        <div id="preview" class="invoice-preview"></div>
+                        <div class="actions">
+                            <button id="download-pdf"><span class="material-icons">download</span> Download PDF</button>
+                            <button id="print-invoice"><span class="material-icons">print</span> Print</button>
+                            <button id="duplicate"><span class="material-icons">content_copy</span> Duplicate</button>
+                            <button id="copy-link"><span class="material-icons">link</span> Copy Link</button>
+                            <button id="premium-download"><span class="material-icons">star</span> Remove Watermark & Download</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="message" class="message"></div>
+            </div>
+        </section>
+        <section id="pricing">
+            <div class="container">
+                <h2>Pricing</h2>
+                <p>Free version includes all features with watermark on PDFs.</p>
+                <p>Upgrade to Premium for watermark-free exports and advanced analytics.</p>
+                <a href="https://paystack.com" class="cta">Upgrade Now</a>
+            </div>
+        </section>
+        <section id="help">
+            <div class="container">
+                <h2>Help & Support</h2>
+                <p>How to create an invoice:</p>
+                <ol>
+                    <li>Fill in your business profile and save.</li>
+                    <li>Add client details.</li>
+                    <li>Enter invoice details and add items.</li>
+                    <li>Preview and export.</li>
+                </ol>
+                <p>For issues, contact support@proinvoice.com</p>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
