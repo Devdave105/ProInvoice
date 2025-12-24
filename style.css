@@ -365,10 +365,13 @@ button:hover {
 @media (max-width: 1024px) {
     .form-preview-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 3rem;
     }
     .preview-wrapper {
-        order: -1;
+        order: -1; /* Preview on top on smaller screens */
+    }
+    .item-row {
+        grid-template-columns: 2fr 1fr 1fr auto;
     }
 }
 
@@ -442,5 +445,8 @@ button:hover {
     }
     .actions button {
         padding: 1rem;
+    }
+    .invoice-preview {
+        padding: 1.5rem 1rem;
     }
 }
