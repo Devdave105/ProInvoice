@@ -32,7 +32,7 @@ header {
 }
 
 .logo {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     font-weight: 700;
 }
 
@@ -174,7 +174,7 @@ h2 {
     font-size: 1.05rem;
 }
 
-/* Create Invoice Section */
+/* Create Section (kept fully responsive as before) */
 .create-container {
     max-width: 1600px;
 }
@@ -316,69 +316,189 @@ button:hover {
     font-size: 1.1rem;
 }
 
-/* Pricing & Help */
-#pricing, #help {
+/* Pricing Section */
+#pricing {
     background-color: #0f0f0f;
+    padding: 8rem 0;
+}
+
+.pricing-container {
+    max-width: 1200px;
+    margin: 0 auto;
     text-align: center;
 }
 
-#pricing p, #help p {
-    max-width: 900px;
-    margin: 0 auto 2rem;
-    font-size: 1.1rem;
+.pricing-subtitle {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+    margin-top: 1rem;
 }
 
-#help ol {
-    max-width: 700px;
-    margin: 3rem auto;
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 3rem;
+    margin-top: 5rem;
+}
+
+.plan-card {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    border-color: #0a2540;
+}
+
+.plan-card.recommended {
+    border: 2px solid #0a2540;
+    background-color: #121a2d;
+}
+
+.badge {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #0a2540;
+    color: #ffffff;
+    padding: 0.6rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.plan-card h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.price {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin: 1.5rem 0;
+}
+
+.plan-desc {
+    color: #b0b0b0;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+}
+
+.features {
+    list-style: none;
+    margin: 3rem 0;
     text-align: left;
-    font-size: 1.1rem;
 }
 
-/* Print Styles */
-@media print {
-    body * {
-        visibility: hidden;
-    }
-    .invoice-preview, .invoice-preview * {
-        visibility: visible;
-        color: #000 !important;
-    }
-    .invoice-preview {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        max-width: none;
-        box-shadow: none;
-        padding: 2rem;
-    }
-    .invoice-preview::after {
-        content: none;
-    }
-    header, .actions, .message, .dashboard-summary, #invoice-form {
-        display: none !important;
-    }
+.features li {
+    padding: 1rem 0;
+    border-bottom: 1px solid #333333;
+    font-size: 1.15rem;
 }
 
-/* Responsive Design */
+.features li.limited {
+    color: #777777;
+}
+
+.plan-cta {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 1.4rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 2rem;
+    transition: all 0.3s;
+}
+
+.plan-cta:hover {
+    background-color: #ffffff;
+    color: #0a2540;
+}
+
+.premium-cta {
+    background-color: #0a2540;
+    border-color: #0a2540;
+}
+
+.premium-cta:hover {
+    background-color: #0d3360;
+}
+
+/* Contact Section */
+#contact {
+    background-color: #0a0a0a;
+    padding: 6rem 0;
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-subtitle {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+    margin-bottom: 4rem;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact-item span {
+    font-size: 3rem;
+    color: #0a2540;
+}
+
+.contact-item p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
+/* Footer */
+footer {
+    background-color: #050f1a;
+    padding: 3rem 0;
+    text-align: center;
+    color: #777777;
+    font-size: 1rem;
+}
+
+.footer-container p {
+    margin: 0.5rem 0;
+}
+
+/* Responsive */
 @media (max-width: 1024px) {
     .form-preview-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
     .preview-wrapper {
-        order: -1; /* Preview on top on smaller screens */
-    }
-    .item-row {
-        grid-template-columns: 2fr 1fr 1fr auto;
+        order: -1;
     }
 }
 
 @media (max-width: 768px) {
-    .header-container {
-        padding: 0 1rem;
-    }
     nav ul {
         display: none;
         flex-direction: column;
@@ -399,54 +519,25 @@ button:hover {
     .hero {
         height: 60vh;
     }
-    .hero h2 {
-        font-size: 2.5rem;
-    }
-    .hero p {
-        font-size: 1.3rem;
-    }
-    section {
-        padding: 4rem 0;
-    }
-    h2 {
-        font-size: 2.2rem;
-    }
-    .feature-grid {
-        grid-template-columns: 1fr;
-    }
     .item-row {
         grid-template-columns: 1fr;
     }
-    .actions {
+    .pricing-grid {
         grid-template-columns: 1fr;
     }
-    .invoice-preview {
-        padding: 2rem 1.5rem;
+    .contact-info {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 480px) {
     .hero h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
-    .hero p {
-        font-size: 1.1rem;
-    }
-    .cta {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-    }
-    .section {
-        padding: 1.5rem;
-    }
-    input, select, textarea, button {
-        padding: 0.9rem;
-        font-size: 1rem;
-    }
-    .actions button {
-        padding: 1rem;
+    .price {
+        font-size: 3.8rem;
     }
     .invoice-preview {
-        padding: 1.5rem 1rem;
+        padding: 2rem 1rem;
     }
 }

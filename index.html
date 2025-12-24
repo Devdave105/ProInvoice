@@ -18,7 +18,7 @@
                     <li><a href="#features">Features</a></li>
                     <li><a href="#create">Create Invoice</a></li>
                     <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#help">Help</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="hamburger">
@@ -34,6 +34,7 @@
                 <a href="#create" class="cta">Start Creating</a>
             </div>
         </section>
+
         <section id="features">
             <div class="container">
                 <h2>Key Features</h2>
@@ -71,6 +72,7 @@
                 </div>
             </div>
         </section>
+
         <section id="create">
             <div class="container create-container">
                 <h2>Create Invoice</h2>
@@ -90,7 +92,7 @@
                             <input type="email" id="biz-email" placeholder="Business Email" required>
                             <input type="tel" id="biz-phone" placeholder="Business Phone" required>
                             <input type="file" id="biz-logo" accept="image/*">
-                            <img id="logo-preview" src="" alt="Logo Preview" style="display:none;">
+                            <img id="logo-preview" src="" alt="Logo Preview" style="display:none;max-height:100px;margin-top:1rem;">
                             <button type="button" id="save-biz">Save Profile</button>
                         </div>
                         <div class="section">
@@ -151,28 +153,74 @@
                 <div id="message" class="message"></div>
             </div>
         </section>
+
         <section id="pricing">
-            <div class="container">
-                <h2>Pricing</h2>
-                <p>Free version includes all features with watermark on PDFs.</p>
-                <p>Upgrade to Premium for watermark-free exports and advanced analytics.</p>
-                <a href="https://paystack.com" class="cta">Upgrade Now</a>
+            <div class="container pricing-container">
+                <h2>Choose Your Plan</h2>
+                <p class="pricing-subtitle">One-time payment for lifetime access</p>
+                <div class="pricing-grid">
+                    <div class="plan-card free">
+                        <h3>Free</h3>
+                        <div class="price">₦0</div>
+                        <p class="plan-desc">Great for getting started</p>
+                        <ul class="features">
+                            <li>Unlimited invoices</li>
+                            <li>Business & client profiles</li>
+                            <li>Real-time preview</li>
+                            <li>Dynamic items & calculations</li>
+                            <li>PDF download & print</li>
+                            <li class="limited">Watermark on PDFs</li>
+                        </ul>
+                        <a href="#create" class="plan-cta">Use Free Plan</a>
+                    </div>
+                    <div class="plan-card premium recommended">
+                        <div class="badge">Recommended</div>
+                        <h3>Premium</h3>
+                        <div class="price">₦2,000</div>
+                        <p class="plan-desc">One-time payment — no subscriptions</p>
+                        <ul class="features">
+                            <li>Everything in Free</li>
+                            <li><strong>No watermark</strong></li>
+                            <li>Clean professional PDFs</li>
+                            <li>Priority support</li>
+                            <li>All future updates</li>
+                            <li>Lifetime access</li>
+                        </ul>
+                        <button class="plan-cta premium-cta" id="buy-premium">Buy Premium Now</button>
+                    </div>
+                </div>
             </div>
         </section>
-        <section id="help">
-            <div class="container">
-                <h2>Help & Support</h2>
-                <p>How to create an invoice:</p>
-                <ol>
-                    <li>Fill in your business profile and save.</li>
-                    <li>Add client details.</li>
-                    <li>Enter invoice details and add items.</li>
-                    <li>Preview and export.</li>
-                </ol>
-                <p>For issues, contact support@proinvoice.com</p>
+
+        <section id="contact">
+            <div class="container contact-container">
+                <h2>Contact Us</h2>
+                <p class="contact-subtitle">Have questions or feedback? We'd love to hear from you.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="material-icons">email</span>
+                        <p>support@proinvoice.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <span class="material-icons">whatsapp</span>
+                        <p>+234 800 000 0000</p>
+                    </div>
+                    <div class="contact-item">
+                        <span class="material-icons">location_on</span>
+                        <p>Lagos, Nigeria</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
+
+    <footer>
+        <div class="container footer-container">
+            <p>&copy; 2025 ProInvoice. All rights reserved.</p>
+            <p>Made with ❤️ for freelancers & small businesses</p>
+        </div>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="script.js"></script>
